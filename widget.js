@@ -48,7 +48,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 
     function loadWidget() {
       $jQNoConflict = jQuery.noConflict(true);
-
+	console.log('loaded widget');
       $jQNoConflict(document).ready(function () {
 
         var countriesWidget = [];
@@ -98,7 +98,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                 var stripe = null;
                 var domain = typeof widgetData.domain === 'undefined' ? '' : widgetData.domain;
                 var stripeSCAFlag = false;
-
+	console.log('updated widget');
                 $jQNoConflict.post(widgetData.url + '/front_end/purchase/getfields', {
                     'id': widgetData.idwidget,
                     'hash': widgetData.hashwidget,
@@ -208,7 +208,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             stripeHandler = StripeCheckout.configure({
                                 panelLabel: 'Subscribe',
                                 allowRememberMe: 'false',
-                                key: response.data.stripe_pk
+                                key: 'pk_test_51SeyRlDuyBd6akMI7wHEzzzdStWrCoMQA0v5R0D8lJV8OphJCWV5DeWdGWHvBx60ukuQwpHKHA7Js4lEcWVFoDvo00ggIVwP05'
                             });
                         }
 
@@ -353,7 +353,8 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             }
 
                             $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text('');
-
+console.log('data post = ' + JSON.stringify(postData));
+console.log('post url = ' + url +'/front_end/purchase');
                             $jQNoConflict.post(url + '/front_end/purchase', postData).then(function (response) {
 
                                 if (response.error) {
@@ -391,7 +392,8 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     if (result.error) {
                                         showError(result.error.message);
                                     } else {
-                                        postData.gateway_data.stripe_token = result.setupIntent.payment_method;
+                                        // Hapus Sementara
+                                        // postData.gateway_data.stripe_token = result.setupIntent.payment_method;
                                         postFn();
                                     }
                                 });
@@ -419,11 +421,12 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             };
                         }
 
-
+console.log('gateway check' + gateway);
                         if (gateway == 'stripe') {
+console.log('SCAFlag '+ stripeSCAFlag);
                             if (stripeSCAFlag) {
                                 var planAmount = $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text();
-
+				console.log(planAmount);
                                 var stripeOverlay = '<div id="stripe-overlay">' +
                                     '<form id="stripe-payment-form">\n' +
                                     '<div class="subscription-information">' +
@@ -449,6 +452,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     '</div>' +
                                     '</form>' +
                                     '</div>';
+	console.log(stripeOverlay);
 
                                 $jQNoConflict("body").append(stripeOverlay);
 
@@ -462,7 +466,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     var stripeElements = stripe.elements();
                                     var style = {
                                         base: {
-                                            color: "#32325d",
+                                            color: "#9e0b21",
                                             fontFamily: 'Arial, sans-serif',
                                             fontSmoothing: "antialiased",
                                             fontSize: "16px",
@@ -520,12 +524,15 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
+console.log('kesini stripe token = '+postData.gateway_data.stripe_token);
+                                // Hapus Sementara
                                 stripeHandler.open({
                                     name: $jQNoConflict(this).attr('data-name'),
                                     email: email,
                                     description: $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text(),
                                     token: function (token) {
-                                        postData.gateway_data.stripe_token = token.id;
+  console.log('ke else brow '+token.id);
+                                        // postData.gateway_data.stripe_token = token.id;
                                         postFn();
                                     }
                                 });
