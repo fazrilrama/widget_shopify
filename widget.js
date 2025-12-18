@@ -393,7 +393,7 @@ console.log('post url = ' + url +'/front_end/purchase');
                                         showError(result.error.message);
                                     } else {
                                         // Hapus Sementara
-                                        // postData.gateway_data.stripe_token = result.setupIntent.payment_method;
+                                        postData.gateway_data.stripe_token = result.setupIntent.payment_method;
                                         postFn();
                                     }
                                 });
@@ -532,7 +532,7 @@ console.log('kesini stripe token = '+postData.gateway_data.stripe_token);
                                     description: $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text(),
                                     token: function (token) {
   console.log('ke else brow '+token.id);
-                                        // postData.gateway_data.stripe_token = token.id;
+                                        postData.gateway_data.stripe_token = token.id;
                                         postFn();
                                     }
                                 });
