@@ -295,7 +295,10 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 
                         if ($jQNoConflict('.bold_customer_id').length) {
                             customer_id = $jQNoConflict('.bold_customer_id').text();
+                            email = $jQNoConflict('#' + plantag + '_membership_container').find('.email').val();
                             customer_id = parseInt(customer_id);
+                            first_name = $jQNoConflict('#' + plantag + '_membership_container').find('.first_name').val();
+                            last_name = $jQNoConflict('#' + plantag + '_membership_container').find('.last_name').val();
                         } else {
                             email = $jQNoConflict('#' + plantag + '_membership_container').find('.email').val();
                             first_name = $jQNoConflict('#' + plantag + '_membership_container').find('.first_name').val();
