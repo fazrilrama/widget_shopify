@@ -322,6 +322,9 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             'domain': domain
                         };
 
+                        console.log('subscriptionBox');
+                        console.log(subscriptionBox);
+
                         if (subscriptionBox == 1) {
                             postData.address = {
                                 'address1': $jQNoConflict('#' + plantag + '_membership_container').find('.address1').val(),
@@ -353,10 +356,11 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             }
 
                             $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text('');
-console.log('data post = ' + JSON.stringify(postData));
-console.log('post url = ' + url +'/front_end/purchase');
+                            console.log('data post = ' + JSON.stringify(postData));
+                            console.log('post url = ' + url +'/front_end/purchase');
+                            console.log(JSON.stringify(postData));
                             $jQNoConflict.post(url + '/front_end/purchase', postData).then(function (response) {
-
+                                console.log(response);
                                 if (response.error) {
                                     $jQNoConflict('#spinner_' + plantag).hide();
                                     $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text(response.error);
@@ -373,6 +377,7 @@ console.log('post url = ' + url +'/front_end/purchase');
                                     }
 
                                 } else {
+                                    console.log(response);
                                     top.location = response.redirect_url;
                                 }
                             });
