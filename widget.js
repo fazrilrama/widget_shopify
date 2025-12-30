@@ -324,6 +324,13 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             'domain': domain
                         };
 
+						$jQNoConflict('#pm-submit-btn').prop('disabled', true);
+						$jQNoConflict('#pm-submit-btn').on('click', function () {
+							let btnId = this.id;
+							console.log(btnId);
+							$jQNoConflict(this).prop('disabled', true);
+						});
+
                         if (subscriptionBox == 1) {
                             postData.address = {
                                 'address1': $jQNoConflict('#' + plantag + '_membership_container').find('.address1').val(),
@@ -527,13 +534,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-								$jQNoConflict('#pm-submit-btn').prop('disabled', true);
-								$jQNoConflict('#pm-submit-btn').on('click', function () {
-								    let btnId = this.id;
-								    console.log(btnId);
-									$jQNoConflict(this).prop('disabled', true);
-								});
-								
 								let raw = ($jQNoConflict(this).attr('data-name') ?? $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text() ?? '') + '';
 							
 							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
