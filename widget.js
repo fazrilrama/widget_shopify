@@ -522,19 +522,13 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-								let name_custom = '';
-								let raw = ($jQNoConflict(this).attr('data-name') + '').trim();
-								let clean = raw.replace(/[¥,]/g, '');
-								
-								console.log(raw);
-								
-								if (clean === '500 Monthly') {
-								    name_custom = '月額500円';
-								}
-								if (clean === '5000 Yearly') {
-								    name_custom = '年額5,000円';
-								}
-								console.log($jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text());
+							 	let raw = ($jQNoConflict(el).attr('data-name') || '').trim();
+							    let clean = raw.replace(/[¥,]/g, '');
+
+								console.log(clean);
+							
+							    let name_custom = clean === '500 Monthly' ? '月額500円' :
+							                      clean === '5000 Yearly' ? '年額5,000円' : raw;
                                 stripeHandler.open({
                                     name: name_custom,
                                     email: email,
