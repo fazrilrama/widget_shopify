@@ -526,7 +526,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-								let raw = ($jQNoConflict(this).attr('data-name') ?? '') + '';
+								let raw = ($jQNoConflict(this).attr('data-name') ?? $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text() ?? '') + '';
 								console.log($jQNoConflict(this).attr('data-name'));
 								console.log(raw);
 							
