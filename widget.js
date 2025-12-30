@@ -546,7 +546,11 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     token: function (token) {
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
-                                    }
+                                    },
+									closed: function() {
+									    console.log('Popup closed by user');
+									    // your logic here
+									  }
                                 });
                             }
                         } else {
