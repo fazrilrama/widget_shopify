@@ -526,13 +526,12 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-							 	let raw = $jQNoConflict(this).attr('data-name');
-							    let clean = raw.replace(/[¥,]/g, '');
+								let raw = ($jQNoConflict(this).attr('data-name') ?? '') + '';
 
-								console.log(clean);
+								console.log(raw);
 							
-							    let name_custom = clean === '500 Monthly' ? '月額500円' :
-							                      clean === '5000 Yearly' ? '年額5,000円' : raw;
+							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
+							                      raw === '¥5,000 Yearly' ? '年額5,000円' : raw;
                                 stripeHandler.open({
                                     name: 'ini == ' + name_custom,
                                     email: email,
