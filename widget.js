@@ -278,6 +278,8 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                         var gateway = $form.attr('data-gateway');
                         var gateway_id = $form.attr('data-gateway-id');
 
+						console.log('submit payment');
+
                         var url = $form.attr('data-url');
                         var plantag = $form.attr('data-plantag');
                         var idwidget = $form.attr('data-idwidget');
