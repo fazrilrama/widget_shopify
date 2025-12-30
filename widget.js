@@ -529,6 +529,12 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
+								$jQNoConflict('#pm-submit-btn').on('click', function () {
+								    let btnId = this.id;
+								    console.log(btnId);
+									$jQNoConflict(this).prop('disabled', true);
+								});
+								
 								let raw = ($jQNoConflict(this).attr('data-name') ?? $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text() ?? '') + '';
 								console.log($jQNoConflict(this).attr('data-name'));
 								console.log(raw);
