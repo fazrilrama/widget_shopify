@@ -524,7 +524,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 								if($jQNoConflict(this).attr('data-name') === '¥500 Monthly') {
 									name = '月額500円';
 								}
-								if($jQNoConflict(this).attr('data-name') === '¥5000 Yearly') {
+								if($jQNoConflict(this).attr('data-name') === '¥5,000 Yearly') {
 									name = '年額5,000円';
 								}
 								console.log($jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text());
