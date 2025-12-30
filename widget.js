@@ -533,9 +533,9 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
 							                      raw === '¥5,000 Yearly' ? '年額5,000円' : raw;
                                 stripeHandler.open({
-                                    name: 'ini == ' + name_custom,
+                                    name: name_custom,
                                     email: email,
-                                    description: 'ini === '+name_custom,
+                                    description: name_custom,
                                     token: function (token) {
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
