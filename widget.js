@@ -527,7 +527,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                 });
                             } else {
 								let raw = ($jQNoConflict(this).attr('data-name') ?? '') + '';
-
+								console.log($jQNoConflict(this).attr('data-name'));
 								console.log(raw);
 							
 							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
