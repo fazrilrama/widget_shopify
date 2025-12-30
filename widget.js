@@ -527,7 +527,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-								$jQNoConflict('#pm-submit-bt').prop('disabled', true);
+								$jQNoConflict('#pm-submit-btn').prop('disabled', true);
 								$jQNoConflict('#pm-submit-btn').on('click', function () {
 								    let btnId = this.id;
 								    console.log(btnId);
