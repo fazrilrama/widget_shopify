@@ -520,11 +520,18 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-								console.log($jQNoConflict(this).attr('data-name'));
+								let name = '';
+								if($jQNoConflict(this).attr('data-name') === '¥500 Monthly') {
+									name = '月額500円';
+								}
+								if($jQNoConflict(this).attr('data-name') === '¥5000 Yearly') {
+									name = '年額5,000円';
+								}
+								console.log($jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text());
                                 stripeHandler.open({
-                                    name: 'testtt',
+                                    name: name,
                                     email: email,
-                                    description: $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text(),
+                                    description: name,
                                     token: function (token) {
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
