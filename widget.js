@@ -520,18 +520,18 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-								let name = '';
-								if($jQNoConflict(this).attr('data-name') === '¥500 Monthly') {
-									name = '月額500円';
+								let name_custom = '';
+								if($jQNoConflict(this).attr('data-name') == '¥500 Monthly') {
+									name_custom = '月額500円';
 								}
-								if($jQNoConflict(this).attr('data-name') === '¥5,000 Yearly') {
-									name = '年額5,000円';
+								if($jQNoConflict(this).attr('data-name') == '¥5,000 Yearly') {
+									name_custom = '年額5,000円';
 								}
 								console.log($jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text());
                                 stripeHandler.open({
-                                    name: name,
+                                    name: name_custom,
                                     email: email,
-                                    description: name,
+                                    description: name_custom,
                                     token: function (token) {
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
