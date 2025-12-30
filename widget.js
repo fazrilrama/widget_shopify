@@ -357,10 +357,10 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text('');
 
                             $jQNoConflict.post(url + '/front_end/purchase', postData).then(function (response) {
-								const btn = document.getElementById('pm-submit-btn');
 								setTimeout(() => {
-							        btn.disabled = true;
-							        btn.innerHTML = "{{ 'paid_membership.button' | t }}";
+									console.log('masok');
+							        $jQNoConflict('#pm-submit-btn').prop('disabled', true);
+									$jQNoConflict('#pm-submit-btn').html("{{ 'paid_membership.button' | t }}");
 							  	}, 2000);
 
                                 if (response.error) {
