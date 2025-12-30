@@ -1,5 +1,6 @@
 if (typeof memloadedPlanWidgetJS === 'undefined') {
     var memloadedPlanWidgetJS = true;
+	let isSucceeded = false;
     var $jQNoConflict;
     bold_memberships_load_script = function (url, callback) {
         var script = document.createElement('script');
@@ -544,13 +545,16 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     description: name_custom,
 									panelLabel: 'お支払いを実行',
                                     token: function (token) {
+										isSucceeded = true;
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
                                     },
 									closed: function() {
 									    console.log('Popup closed by user');
+										if(!isSucceeded) {
+											$jQNoConflict('#pm-submit-btn').prop('disabled', false).text('有料定期会員に申し込む');
+										}
 										// $jQNoConflict('#pm-submit-btn').prop('disabled', false);
-										$jQNoConflict('#pm-submit-btn').prop('disabled', false).text('有料定期会員に申し込む');
 									  }
                                 });
                             }
