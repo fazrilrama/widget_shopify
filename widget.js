@@ -536,9 +536,10 @@ console.log('SCAFlag '+ stripeSCAFlag);
                             } else {
 console.log('kesini stripe token = '+postData.gateway_data.stripe_token);
                                 // Hapus Sementara
-								console.log('disini');
+								console.log($jQNoConflict(this).attr('data-name'));
+								console.log('test data');
                                 stripeHandler.open({
-                                    name: $jQNoConflict(this).attr('data-name'),
+                                    name: 'test',
                                     email: email,
                                     description: $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text(),
                                     token: function (token) {
