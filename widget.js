@@ -550,7 +550,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 									closed: function() {
 									    console.log('Popup closed by user');
 										// $jQNoConflict('#pm-submit-btn').prop('disabled', false);
-										$jQNoConflict('#pm-submit-btn').prop('disabled', false).text("{{ 'paid_membership.button' | t }}");
+										$jQNoConflict('#pm-submit-btn').prop('disabled', false).text('有料定期会員に申し込む');
 									  }
                                 });
                             }
