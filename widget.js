@@ -536,6 +536,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     name: name_custom,
                                     email: email,
                                     description: name_custom,
+									panelLabel: 'お支払い実施',
                                     token: function (token) {
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
