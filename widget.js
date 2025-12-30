@@ -521,10 +521,13 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                 });
                             } else {
 								let name_custom = '';
+								console.log($jQNoConflict(this).attr('data-name'));
 								if($jQNoConflict(this).attr('data-name') == '¥500 Monthly') {
+									console.log('kesini 1');
 									name_custom = '月額500円';
 								}
 								if($jQNoConflict(this).attr('data-name') == '¥5,000 Yearly') {
+									console.log('ini 2'):
 									name_custom = '年額5,000円';
 								}
 								console.log($jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text());
