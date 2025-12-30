@@ -549,7 +549,8 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     },
 									closed: function() {
 									    console.log('Popup closed by user');
-									    // your logic here
+										// $jQNoConflict('#pm-submit-btn').prop('disabled', false);
+										$jQNoConflict('#pm-submit-btn').prop('disabled', false).text("{{ 'paid_membership.button' | t }}");
 									  }
                                 });
                             }
