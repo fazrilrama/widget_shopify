@@ -325,11 +325,11 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                         };
 
 						$jQNoConflict('#pm-submit-btn').prop('disabled', true);
-						$jQNoConflict('#pm-submit-btn').on('click', function () {
-							let btnId = this.id;
-							console.log(btnId);
-							$jQNoConflict(this).prop('disabled', true);
-						});
+						// $jQNoConflict('#pm-submit-btn').on('click', function () {
+						// 	let btnId = this.id;
+						// 	console.log(btnId);
+						// 	$jQNoConflict(this).prop('disabled', true);
+						// });
 
                         if (subscriptionBox == 1) {
                             postData.address = {
@@ -364,11 +364,11 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text('');
 
                             $jQNoConflict.post(url + '/front_end/purchase', postData).then(function (response) {
-								setTimeout(() => {
-									console.log('masok');
-							        $jQNoConflict('#pm-submit-btn').prop('disabled', true);
-									$jQNoConflict('#pm-submit-btn').html("{{ 'paid_membership.button' | t }}");
-							  	}, 2000);
+								// setTimeout(() => {
+								// 	console.log('masok');
+							 //        $jQNoConflict('#pm-submit-btn').prop('disabled', true);
+								// 	$jQNoConflict('#pm-submit-btn').html("{{ 'paid_membership.button' | t }}");
+							 //  	}, 2000);
 
                                 if (response.error) {
                                     $jQNoConflict('#spinner_' + plantag).hide();
