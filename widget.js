@@ -522,7 +522,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
-							 	let raw = ($jQNoConflict(el).attr('data-name') || '').trim();
+							 	let raw = ($jQNoConflict(this).attr('data-name') || '').trim();
 							    let clean = raw.replace(/[¥,]/g, '');
 
 								console.log(clean);
