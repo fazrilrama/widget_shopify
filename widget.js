@@ -357,6 +357,10 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text('');
 
                             $jQNoConflict.post(url + '/front_end/purchase', postData).then(function (response) {
+								setTimeout(() => {
+							        btn.disabled = true;
+							        btn.innerHTML = "{{ 'paid_membership.button' | t }}";
+							  	}, 2000);
 
                                 if (response.error) {
                                     $jQNoConflict('#spinner_' + plantag).hide();
