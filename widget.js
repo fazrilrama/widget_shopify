@@ -280,8 +280,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                         var gateway = $form.attr('data-gateway');
                         var gateway_id = $form.attr('data-gateway-id');
 
-						console.log('submit payment');
-
                         var url = $form.attr('data-url');
                         var plantag = $form.attr('data-plantag');
                         var idwidget = $form.attr('data-idwidget');
@@ -529,6 +527,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     });
                                 });
                             } else {
+								$jQNoConflict('#pm-submit-bt').prop('disabled', true);
 								$jQNoConflict('#pm-submit-btn').on('click', function () {
 								    let btnId = this.id;
 								    console.log(btnId);
@@ -536,8 +535,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 								});
 								
 								let raw = ($jQNoConflict(this).attr('data-name') ?? $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text() ?? '') + '';
-								console.log($jQNoConflict(this).attr('data-name'));
-								console.log(raw);
 							
 							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
 							                      raw === '¥5,000 Yearly' ? '年額5,000円' : raw;
