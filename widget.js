@@ -534,10 +534,10 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
 							                      raw === '¥5,000 Yearly' ? '年額5,000円' : raw;
                                 stripeHandler.open({
-                                    name: name_custom,
+                                    name: 'HOTERES Digital 有料定期会員',
                                     email: email,
                                     description: name_custom,
-									panelLabel: 'お支払い実施',
+									panelLabel: 'お支払いを実行',
                                     token: function (token) {
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
