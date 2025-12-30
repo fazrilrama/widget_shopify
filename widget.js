@@ -48,7 +48,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 
     function loadWidget() {
       $jQNoConflict = jQuery.noConflict(true);
-	console.log('loaded widget');
+
       $jQNoConflict(document).ready(function () {
 
         var countriesWidget = [];
@@ -91,8 +91,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                     '<div id="spinner_' + widgetData.plantag + '" style="display:none;"><span id="lang_loading_msg_' + widgetData.plantag + '">You will be redirected shortly...</span></div>');
             };
 
-		  console.log(createWidget);
-
             updateWidgetData = function (widgetData) {
                 var subscriptionBox = 0;
                 var paypalEnabled = false;
@@ -100,7 +98,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                 var stripe = null;
                 var domain = typeof widgetData.domain === 'undefined' ? '' : widgetData.domain;
                 var stripeSCAFlag = false;
-	console.log('updated widget');
+
                 $jQNoConflict.post(widgetData.url + '/front_end/purchase/getfields', {
                     'id': widgetData.idwidget,
                     'hash': widgetData.hashwidget,
@@ -210,7 +208,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             stripeHandler = StripeCheckout.configure({
                                 panelLabel: 'Subscribe',
                                 allowRememberMe: 'false',
-                                key: 'pk_test_51SeyRlDuyBd6akMI7wHEzzzdStWrCoMQA0v5R0D8lJV8OphJCWV5DeWdGWHvBx60ukuQwpHKHA7Js4lEcWVFoDvo00ggIVwP05'
+                                key: response.data.stripe_pk
                             });
                         }
 
@@ -297,10 +295,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 
                         if ($jQNoConflict('.bold_customer_id').length) {
                             customer_id = $jQNoConflict('.bold_customer_id').text();
-                            email = $jQNoConflict('#' + plantag + '_membership_container').find('.email').val();
                             customer_id = parseInt(customer_id);
-                            first_name = $jQNoConflict('#' + plantag + '_membership_container').find('.first_name').val();
-                            last_name = $jQNoConflict('#' + plantag + '_membership_container').find('.last_name').val();
                         } else {
                             email = $jQNoConflict('#' + plantag + '_membership_container').find('.email').val();
                             first_name = $jQNoConflict('#' + plantag + '_membership_container').find('.first_name').val();
@@ -326,9 +321,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             'last_name': last_name,
                             'domain': domain
                         };
-
-                        console.log('subscriptionBox');
-                        console.log(subscriptionBox);
 
                         if (subscriptionBox == 1) {
                             postData.address = {
@@ -361,11 +353,9 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             }
 
                             $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text('');
-                            console.log('data post = ' + JSON.stringify(postData));
-                            console.log('post url = ' + url +'/front_end/purchase');
-                            console.log(JSON.stringify(postData));
+
                             $jQNoConflict.post(url + '/front_end/purchase', postData).then(function (response) {
-                                console.log(response);
+
                                 if (response.error) {
                                     $jQNoConflict('#spinner_' + plantag).hide();
                                     $jQNoConflict('#' + plantag + '_membership_container #bold-mem-email-manual-error').text(response.error);
@@ -382,7 +372,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     }
 
                                 } else {
-                                    console.log(response);
                                     top.location = response.redirect_url;
                                 }
                             });
@@ -402,7 +391,6 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                                     if (result.error) {
                                         showError(result.error.message);
                                     } else {
-                                        // Hapus Sementara
                                         postData.gateway_data.stripe_token = result.setupIntent.payment_method;
                                         postFn();
                                     }
@@ -431,12 +419,11 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             };
                         }
 
-console.log('gateway check' + gateway);
+
                         if (gateway == 'stripe') {
-console.log('SCAFlag '+ stripeSCAFlag);
                             if (stripeSCAFlag) {
                                 var planAmount = $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text();
-				console.log(planAmount);
+
                                 var stripeOverlay = '<div id="stripe-overlay">' +
                                     '<form id="stripe-payment-form">\n' +
                                     '<div class="subscription-information">' +
@@ -462,7 +449,6 @@ console.log('SCAFlag '+ stripeSCAFlag);
                                     '</div>' +
                                     '</form>' +
                                     '</div>';
-	console.log(stripeOverlay);
 
                                 $jQNoConflict("body").append(stripeOverlay);
 
@@ -476,7 +462,7 @@ console.log('SCAFlag '+ stripeSCAFlag);
                                     var stripeElements = stripe.elements();
                                     var style = {
                                         base: {
-                                            color: "#9e0b21",
+                                            color: "#32325d",
                                             fontFamily: 'Arial, sans-serif',
                                             fontSmoothing: "antialiased",
                                             fontSize: "16px",
@@ -534,16 +520,12 @@ console.log('SCAFlag '+ stripeSCAFlag);
                                     });
                                 });
                             } else {
-console.log('kesini stripe token = '+postData.gateway_data.stripe_token);
-                                // Hapus Sementara
 								console.log($jQNoConflict(this).attr('data-name'));
-								console.log('test data');
                                 stripeHandler.open({
-                                    name: 'test',
+                                    name: 'testtt',
                                     email: email,
                                     description: $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text(),
                                     token: function (token) {
-  console.log('ke else brow '+token.id);
                                         postData.gateway_data.stripe_token = token.id;
                                         postFn();
                                     }
