@@ -91,6 +91,8 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                     '<div id="spinner_' + widgetData.plantag + '" style="display:none;"><span id="lang_loading_msg_' + widgetData.plantag + '">You will be redirected shortly...</span></div>');
             };
 
+		  console.log(createWidget);
+
             updateWidgetData = function (widgetData) {
                 var subscriptionBox = 0;
                 var paypalEnabled = false;
