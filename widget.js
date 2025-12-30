@@ -208,6 +208,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             stripeHandler = StripeCheckout.configure({
                                 panelLabel: 'Subscribe',
                                 allowRememberMe: 'false',
+								image: 'https://hoteres.com/cdn/shop/files/HOTERES_logo_guide_20251120_2.png?height=80&v=1764768709',
                                 key: response.data.stripe_pk
                             });
                         }
