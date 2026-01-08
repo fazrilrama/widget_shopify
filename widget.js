@@ -537,8 +537,8 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                             } else {
 								let raw = ($jQNoConflict(this).attr('data-name') ?? $jQNoConflict('#' + plantag + '_membership_billing_option option:selected').text() ?? '') + '';
 							
-							    let name_custom = raw === '¥500 Monthly' ? '月額500円' :
-							                      raw === '¥5,000 Yearly' ? '年額5,000円' : raw;
+							    let name_custom = raw === '¥500 Monthly' ? '有料定期会員 月額500円' :
+							                      raw === '¥5,000 Yearly' ? '有料定期会員 年額5,000円' : raw;
                                 stripeHandler.open({
                                     name: 'HOTERES Digital 有料定期会員',
                                     email: email,
