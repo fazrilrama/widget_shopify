@@ -539,6 +539,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
 							
 							    let name_custom = raw === '¥500 Monthly' ? '有料定期会員 月額500円' :
 							                      raw === '¥5,000 Yearly' ? '有料定期会員 年額5,000円' : raw;
+								console.log(name_custom);
                                 stripeHandler.open({
                                     name: 'HOTERES Digital 有料定期会員',
                                     email: email,
