@@ -98,7 +98,7 @@ if (typeof memloadedPlanWidgetJS === 'undefined') {
                 var stripeHandler = null;
                 var stripe = null;
                 var domain = typeof widgetData.domain === 'undefined' ? '' : widgetData.domain;
-                var stripeSCAFlag = false;
+                var stripeSCAFlag = true;
 
                 $jQNoConflict.post(widgetData.url + '/front_end/purchase/getfields', {
                     'id': widgetData.idwidget,
